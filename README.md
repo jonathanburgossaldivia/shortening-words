@@ -1,50 +1,22 @@
 # Word shortener
 
-Word shortener, create a list with the shortened word coming soon from the original word, then replace with the word shortened by the original
-
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Word shortener, created to reduce disk space, this program creates a list of files with the shortened words next to the original words, with this you can encode a file and create a file with a smaller file size and can "compress" many more Files with this list, with this program you can reduce storage space by half or less
 
 ### Prerequisites
 
 Requires macOS or Linux operating system.
 
-```
-hola
-```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
 ### How to use
 
 ruby shortening.rb [options] [arguments...]
 
+Available options: make file, encode or decode a file, read a file with line numbers. 
+
 ```
 ruby shortening.rb [options] [arguments...]
 ```
 
-For example if you want to create a new word list from a file and save them in a folder configured in the Yaml file:
+For example if you want to create a new word list from a file and save them in a folder configured in the Yaml file, by default created in the home folder:
 
 ```
 ruby shortening.rb -m file_to_make_lists.txt
