@@ -46,7 +46,7 @@ ruby shortening.rb -n file_to_read.txt
 
 ## Authors
 
-* **Jonathan Burgos** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Jonathan Burgos** - *Initial work*
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
