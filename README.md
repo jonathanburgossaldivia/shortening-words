@@ -44,6 +44,24 @@ ruby shortening.rb [options] [arguments...]
 ruby shortening.rb [options] [arguments...]
 ```
 
+For example if you want to create a new word list from a file and save them in a folder configured in the Yaml file:
+
+```
+ruby shortening.rb -m file_to_make_lists.txt
+```
+
+If you want to encode a file with the created list you must execute::
+
+```
+ruby shortening.rb -e file_to_encode.txt
+```
+
+If you want to decode a file with the created list you must execute:
+
+```
+ruby shortening.rb -d file_to_decode.txt
+```
+
 ### And coding style tests
 
 Explain what these tests test and why
