@@ -1,6 +1,6 @@
-# Project Title
+# Word shortener
 
-Word shortener, then replace with the word shortened by the original
+Word shortener, create a list with the shortened word coming soon from the original word, then replace with the word shortened by the original
 
 ## Getting Started
 
@@ -8,10 +8,10 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+Requires macOS or Linux operating system.
 
 ```
-Give examples
+hola
 ```
 
 ### Installing
@@ -36,12 +36,12 @@ End with an example of getting some data out of the system or using it for a lit
 
 Explain how to run the automated tests for this system
 
-### Break down into end to end tests
+### How to use
 
-Explain what these tests test and why
+ruby shortening.rb [options] [arguments...]
 
 ```
-Give an example
+ruby shortening.rb [options] [arguments...]
 ```
 
 ### And coding style tests
