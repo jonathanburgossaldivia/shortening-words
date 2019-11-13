@@ -1,6 +1,6 @@
 # Word shortener
 
-Word shortener, created to reduce disk space, this program creates a list of files with the shortened words next to the original words, with this you can encode a file and create a file with a smaller file size and can "compress" many more files with this list, with this program you can reduce storage space by half or less
+Word shortener, created to reduce disk space, this program creates a list of files with the shortened words next to the original words, with this you can encode a file and create a file with a smaller file size and can "compress" many more files with this list, with this program you can reduce storage space to half or less.
 
 ### Prerequisites
 
@@ -10,11 +10,7 @@ Requires macOS or Linux operating system.
 
 Shortening has several ways of using, available options: make file, encode or decode a file, read a file with line numbers. 
 
-Method of use from the command line:
-
-ruby shortening.rb [options] [arguments...]
-
-Example:
+Method of usage from the command line:
 
 ```
 ruby shortening.rb [options] [arguments...]
@@ -26,7 +22,7 @@ If you want to create a new word list from a file and save them in a folder conf
 ruby shortening.rb -m file_to_make_lists.txt
 ```
 
-If you want to encode a file with the created list you must execute::
+If you want to encode a file with the created list you must execute:
 
 ```
 ruby shortening.rb -e file_to_encode.txt
