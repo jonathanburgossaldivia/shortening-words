@@ -1,6 +1,6 @@
 # Word shortener
 
-Word shortener, created to reduce disk space, this program creates a list of files with the shortened words next to the original words, with this you can encode a file and create a file with a smaller file size and can "compress" many more files with this list, with this program you can reduce storage space to half or less.
+Word shortener, created to reduce disk space by encoding plain text files, this program creates a list of files with the shortened words next to the original words, with this you can encode a file and create a file with a smaller file size and can "compress" many more files with this list, with this program you can reduce storage space to half or less.
 
 ### Prerequisites
 
