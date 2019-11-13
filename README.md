@@ -40,6 +40,11 @@ Or if you want to read a file showing the number corresponding to the lines:
 ruby shortening.rb -n file_to_read.txt
 ```
 
+### THINGS TO DO
+
+- Compatibility with CRLF line terminators
+- Codify new lines, carriage returns, among others.
+
 ## Built With
 
 * [Sublime Text 3](https://www.sublimetext.com) - More than a simple text editor.
