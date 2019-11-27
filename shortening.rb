@@ -52,7 +52,6 @@ def list_maker(filename)
       reps = detect_repetitions(key)
       if reps == true
         word = key.gsub(/(.)\1+/) { |x| "#{Regexp.last_match(1)}#{x.size}" }
-        puts word.to_s + ' si esta repetido'
         open(@lists_path + @word_reduction_list, 'a') { |f| f.puts word.to_s }
       end
       f.puts "#{@the_first}#{@letter_counter} " + key.to_s if key.length > 3
@@ -132,6 +131,40 @@ def encode_file(filename)
   puts ' Size: '.ljust(22) + format_mb(encoded_file_size)
 end
 
+def decode_file(filename)
+  decoded_word = ''
+  print "\n Decoding: \n\n"
+  File.open(filename) do |fp| fp.read.scan(%r{\w+(?:0[1-9]|[1-9]\d)\d|[\d|[:alpha:]](?:(?:[[:alpha:]])*[[:alpha:]])?|\n|\s|'|-|\.|:|/|\.\s|\`|\W|0}) do |word|
+      @first_initial = word[0]
+      search_word(@lists_path + @word_reduction_list, word)
+      if @status_found == true
+        encode_repetitions(word, false)
+        decoded_word += @whole_word + ' '
+        next
+      end
+      search_word(@lists_path + @exceptions_list, word)
+      if @status_found == true
+        decoded_word += @word_value + ' '
+      elsif !Dir.glob(@lists_path + @first_initial.downcase + \
+        @lists_name).empty?
+        list_to_hash @lists_path + @first_initial.downcase + @lists_name
+        decoded_word = if @hash.key?(word)
+                         decoded_word + @hash[word] + ' '
+                       else
+                         decoded_word + word + ' '
+                       end
+      elsif word =~ /\n/
+        decoded_word +=   "\n"
+      elsif word =~ /\d+|\W+/
+        decoded_word +=   word
+      end
+    end
+  end
+  File.open('decoded.txt', 'w') { |file| file.puts decoded_word }
+  puts ' Original file: '.ljust(22) + filename.to_s
+  puts ' Decoded file: '.ljust(22) + File.expand_path('decoded.txt').to_s
+end
+
 def format_mb(size)
   conv = %w[b kb mb gb tb pb eb]
   scale = 1024
@@ -145,41 +178,6 @@ def format_mb(size)
   end
   ndx = 7
   "#{format('%.3f', (size / (scale**(ndx - 1))))} #{conv[ndx - 1]}"
-end
-
-def decode_file(filename)
-  decoded_word = ''
-  print "\n Decoding: \n\n"
-  File.open(filename) do |fp|
-    fp.read.scan(%r{\w+(?:0[1-9]|[1-9]\d)\d|[\d|[:alpha:]](?:(?:[[:alpha:]])*[[:alpha:]])?|\n|\s|'|-|\.|:|/|\.\s|\`|\W|0}) do |word|
-      @first_initial = word[0]
-      search_word(@lists_path + @word_reduction_list, word)
-      if @status_found == true
-        encode_repetitions(word, false)
-        decoded_word += @whole_word
-        next
-      end
-      search_word(@lists_path + @exceptions_list, word)
-      if @status_found == true
-        decoded_word += @word_value
-      elsif !Dir.glob(@lists_path + @first_initial.downcase + \
-        @lists_name).empty?
-        list_to_hash @lists_path + @first_initial.downcase + @lists_name
-        decoded_word = if @hash.key?(word)
-                         decoded_word + @hash[word]
-                       else
-                         decoded_word + word
-                       end
-      elsif word =~ /\n/
-        decoded_word +=   "\n"
-      elsif word =~ /\d+|\W+/
-        decoded_word +=   word
-      end
-    end
-  end
-  File.open('decoded.txt', 'w') { |file| file.puts decoded_word }
-  puts ' Original file: '.ljust(22) + filename.to_s
-  puts ' Decoded file: '.ljust(22) + File.expand_path('decoded.txt').to_s
 end
 
 def search_word(file_list, the_word)
